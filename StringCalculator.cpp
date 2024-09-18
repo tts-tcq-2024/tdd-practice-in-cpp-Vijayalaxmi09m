@@ -45,7 +45,9 @@ void StringCalculator::checkForNegatives(const std::vector<int>& numbers) {
 int StringCalculator::calculateSum(const std::vector<int>& numbers) {
     int sum = 0;
     for (int number : numbers) {
-        sum += number;
+        if (number <= 1000) {  // Ignore numbers greater than 1000
+            sum += number;
+        }
     }
     return sum;
 }
