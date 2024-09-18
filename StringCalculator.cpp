@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <algorithm>  // For std::replace
 
 int StringCalculator::add(const std::string& input) {
     if (input.empty()) {
@@ -9,9 +10,16 @@ int StringCalculator::add(const std::string& input) {
     }
 
     // Step-by-step processing: Extract numbers, check for negatives, then sum
-    std::vector<int> numbers = extractNumbers(input);
+    std::string normalizedInput = normalizeDelimiters(input);
+    std::vector<int> numbers = extractNumbers(normalizedInput);
     checkForNegatives(numbers);
     return calculateSum(numbers);
+}
+
+std::string StringCalculator::normalizeDelimiters(const std::string& input) {
+    std::string normalized = input;
+    std::replace(normalized.begin(), normalized.end(), '\n', ',');  // Replace newlines with commas
+    return normalized;
 }
 
 std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
