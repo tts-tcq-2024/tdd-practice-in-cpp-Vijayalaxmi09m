@@ -1,4 +1,3 @@
-// StringCalculator.h
 #ifndef STRING_CALCULATOR_H
 #define STRING_CALCULATOR_H
 
@@ -10,6 +9,7 @@ public:
     int add(const std::string& input);
 private:
     int sumNumbers(const std::string& input);
+    void checkForNegatives(const std::vector<int>& numbers);
 };
 
 #endif // STRING_CALCULATOR_H
