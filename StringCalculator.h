@@ -9,10 +9,10 @@ class StringCalculator {
 public:
     int add(const std::string& input);
 private:
-    std::vector<int> extractNumbers(const std::string& input, char delimiter);  // Extract numbers with a custom delimiter
+    std::vector<int> extractNumbers(const std::string& input);  // Extract numbers
     void checkForNegatives(const std::vector<int>& numbers);    // Check negatives
     int calculateSum(const std::vector<int>& numbers);          // Sum numbers, ignore > 1000
-    std::string normalizeDelimiters(const std::string& input, char& delimiter);  // Normalize delimiters and find custom delimiter
+    std::string normalizeDelimiters(const std::string& input);  // Normalize delimiters
 };
 
 #endif // STRING_CALCULATOR_H
