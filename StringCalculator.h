@@ -9,8 +9,9 @@ class StringCalculator {
 public:
     int add(const std::string& input);
 private:
-    int sumNumbers(const std::string& input);
-    void checkForNegatives(const std::vector<int>& numbers);  // Correct the declaration
+    std::vector<int> extractNumbers(const std::string& input);  // Extract numbers
+    void checkForNegatives(const std::vector<int>& numbers);    // Check negatives
+    int calculateSum(const std::vector<int>& numbers);          // Sum numbers
 };
 
 #endif // STRING_CALCULATOR_H
