@@ -9,26 +9,32 @@ int StringCalculator::add(const std::string& input) {
         return 0;  // Return 0 for empty input
     }
 
-    // Step-by-step processing: Extract numbers, check for negatives, then sum
-    std::string normalizedInput = normalizeDelimiters(input);
-    std::vector<int> numbers = extractNumbers(normalizedInput);
+    char delimiter = ',';
+    std::string normalizedInput = normalizeDelimiters(input, delimiter);
+    std::vector<int> numbers = extractNumbers(normalizedInput, delimiter);
     checkForNegatives(numbers);
     return calculateSum(numbers);
 }
 
-std::string StringCalculator::normalizeDelimiters(const std::string& input) {
-    std::string normalized = input;
-    std::replace(normalized.begin(), normalized.end(), '\n', ',');  // Replace newlines with commas
-    return normalized;
+std::string StringCalculator::normalizeDelimiters(const std::string& input, char& delimiter) {
+    if (input.find("//") == 0) {
+        size_t delimiterPos = input.find('\n');
+        delimiter = input[2];  // Custom delimiter is the third character
+        return input.substr(delimiterPos + 1);  // Remove the custom delimiter line
+    }
+    return input;
 }
 
-std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
+std::vector<int> StringCalculator::extractNumbers(const std::string& input, char delimiter) {
     std::stringstream ss(input);
     std::string token;
     std::vector<int> numbers;
 
-    while (std::getline(ss, token, ',')) {
-        numbers.push_back(std::stoi(token));  // Convert string to int and store
+    while (std::getline(ss, token, delimiter)) {
+        int number = std::stoi(token);
+        if (number <= 1000) {  // Ignore numbers greater than 1000 during extraction
+            numbers.push_back(number);
+        }
     }
 
     return numbers;
@@ -45,9 +51,7 @@ void StringCalculator::checkForNegatives(const std::vector<int>& numbers) {
 int StringCalculator::calculateSum(const std::vector<int>& numbers) {
     int sum = 0;
     for (int number : numbers) {
-        if (number <= 1000) {  // Ignore numbers greater than 1000
-            sum += number;
-        }
+        sum += number;  // Sum all valid numbers
     }
     return sum;
 }
