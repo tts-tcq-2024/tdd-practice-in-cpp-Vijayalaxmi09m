@@ -8,37 +8,36 @@ int StringCalculator::add(const std::string& input) {
         return 0;  // Return 0 for empty input
     }
 
-    // Delegate to a helper function to sum the numbers
-    return sumNumbers(input);
+    // Step-by-step processing: Extract numbers, check for negatives, then sum
+    std::vector<int> numbers = extractNumbers(input);
+    checkForNegatives(numbers);
+    return calculateSum(numbers);
 }
 
-int StringCalculator::sumNumbers(const std::string& input) {
+std::vector<int> StringCalculator::extractNumbers(const std::string& input) {
     std::stringstream ss(input);
     std::string token;
     std::vector<int> numbers;
-    int sum = 0;
 
     while (std::getline(ss, token, ',')) {
-        int number = std::stoi(token);
-        numbers.push_back(number);  // Store the numbers
-        sum += number;
+        numbers.push_back(std::stoi(token));  // Convert string to int and store
     }
 
-    // Check for negatives after accumulating the numbers
-    checkForNegatives(numbers);
-
-    return sum;
+    return numbers;
 }
 
 void StringCalculator::checkForNegatives(const std::vector<int>& numbers) {
-    std::vector<int> negatives;
     for (int number : numbers) {
         if (number < 0) {
-            negatives.push_back(number);
+            throw std::runtime_error("Negatives not allowed: " + std::to_string(number));
         }
     }
+}
 
-    if (!negatives.empty()) {
-        throw std::runtime_error("Negatives not allowed: " + std::to_string(negatives[0]));
+int StringCalculator::calculateSum(const std::vector<int>& numbers) {
+    int sum = 0;
+    for (int number : numbers) {
+        sum += number;
     }
+    return sum;
 }
