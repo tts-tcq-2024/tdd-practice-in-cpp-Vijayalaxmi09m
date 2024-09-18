@@ -1,4 +1,3 @@
-// StringCalculator.cpp
 #include "StringCalculator.h"
 #include <string>
 #include <sstream>
@@ -16,21 +15,30 @@ int StringCalculator::add(const std::string& input) {
 int StringCalculator::sumNumbers(const std::string& input) {
     std::stringstream ss(input);
     std::string token;
+    std::vector<int> numbers;
     int sum = 0;
-    std::vector<int> negatives;
 
     while (std::getline(ss, token, ',')) {
         int number = std::stoi(token);
-        if (number < 0) {
-            negatives.push_back(number);  // Collect negative numbers
-        }
+        numbers.push_back(number);  // Store the numbers
         sum += number;
     }
 
-    // If there are negative numbers, throw an exception
+    // Check for negatives after accumulating the numbers
+    checkForNegatives(numbers);
+
+    return sum;
+}
+
+void StringCalculator::checkForNegatives(const std::vector<int>& numbers) {
+    std::vector<int> negatives;
+    for (int number : numbers) {
+        if (number < 0) {
+            negatives.push_back(number);
+        }
+    }
+
     if (!negatives.empty()) {
         throw std::runtime_error("Negatives not allowed: " + std::to_string(negatives[0]));
     }
-
-    return sum;
 }
