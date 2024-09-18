@@ -12,6 +12,7 @@ private:
     std::vector<int> extractNumbers(const std::string& input);  // Extract numbers
     void checkForNegatives(const std::vector<int>& numbers);    // Check negatives
     int calculateSum(const std::vector<int>& numbers);          // Sum numbers
+    std::string normalizeDelimiters(const std::string& input);  // Normalize delimiters
 };
 
 #endif // STRING_CALCULATOR_H
