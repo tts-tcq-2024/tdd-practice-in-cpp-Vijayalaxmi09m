@@ -1,7 +1,7 @@
 Section,Content
 Purpose,The purpose of this document is to define the test cases for validating the behavior of the StringCalculator class.
-Scope,"This test specification covers unit testing for handling empty strings, summing numbers separated by delimiters, supporting custom delimiters, and handling edge cases such as negative numbers and numbers greater than 1000."
-Test Environment,"Development Language: C++, Testing Framework: GoogleTest, OS: [Your OS], Compiler: [Your Compiler]"
+Scope,"This test specification covers unit testing for handling empty strings. Summing numbers separated by delimiters. supporting custom delimiters and handling edge cases such as negative numbers and numbers greater than 1000."
+Test Environment,"Development Language: C++ Testing Framework: GoogleTest OS: [Your OS], Compiler: [Your Compiler]"
 Test Case ID,Test Description,Input,Expected Output,Expected Behavior
 TC01,Return 0 for an empty string input.,"""""",0,The method returns 0 when no numbers are provided.
 TC02,Return 0 for a single zero as input.,"""0""",0,The method returns 0 when the input is '0'.
