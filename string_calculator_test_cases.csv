@@ -1,0 +1,20 @@
+Test_Case_ID,Description,Input,Expected_Output,Expected_Behavior
+1,Empty string returns 0,"""""",0,Returns 0 when the input is an empty string
+2,Single number returns the number itself,"""1""",1,Returns the single number as the sum
+3,Two numbers separated by a comma return their sum,"""1,2""",3,Returns the sum of two numbers separated by a comma
+4,Unknown amount of numbers return their sum,"""1,2,3,4,5""",15,Handles an unknown number of numbers and returns their sum
+5,Newlines between numbers are handled,"""1
+2,3""",6,"Handles newlines as valid delimiters, returns sum"
+6,Negative numbers throw an exception,"""-1,2""",Exception: negatives not allowed: -1,Throws an exception for negative numbers
+7,Numbers bigger than 1000 are ignored,"""2,1001""",2,"Ignores numbers greater than 1000, returns sum of valid numbers"
+8,Different delimiters are supported (single character),"""//;
+1;2""",3,Supports single-character custom delimiter and returns sum
+9,Different delimiters are supported (multi-character),"""//***
+1***2***3""",6,Supports multi-character custom delimiter and returns sum
+10,No input with multiple delimiters or newlines is allowed (invalid),"""1,
+""",Invalid Input,Invalid input format with mixed delimiters/newlines is not allowed
+11,"Combination of valid numbers, delimiters, and newlines returns sum","""//;
+1;2
+3""",6,"Handles a combination of valid numbers, delimiters, and newlines"
+12,Delimiters of any length are supported,"""//***
+12***34***56""",102,Supports custom delimiters of any length and returns sum
