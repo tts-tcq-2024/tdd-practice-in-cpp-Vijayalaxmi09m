@@ -6,16 +6,15 @@ Test_Case_ID,Description,Input,Expected_Output,Expected_Behavior
 5,Newlines between numbers are handled,"""1
 2,3""",6,"Handles newlines as valid delimiters, returns sum"
 6,Negative numbers throw an exception,"""-1,2""",Exception: negatives not allowed: -1,Throws an exception for negative numbers
-7,Multiple negative numbers throw exception listing all negatives,"""-1,-2,-3""","Exception: negatives not allowed: -1,-2,-3",Throws an exception for all negative numbers listed
-8,Numbers bigger than 1000 are ignored,"""2,1001""",2,"Ignores numbers greater than 1000, returns sum of valid numbers"
-9,Different delimiters are supported (single character),"""//;
+7,Numbers bigger than 1000 are ignored,"""2,1001""",2,"Ignores numbers greater than 1000, returns sum of valid numbers"
+8,Different delimiters are supported (single character),"""//;
 1;2""",3,Supports single-character custom delimiter and returns sum
-10,Different delimiters are supported (multi-character),"""//***
+9,Different delimiters are supported (multi-character),"""//***
 1***2***3""",6,Supports multi-character custom delimiter and returns sum
-11,No input with multiple delimiters or newlines is allowed (invalid),"""1,
+10,No input with multiple delimiters or newlines is allowed (invalid),"""1,
 """,Invalid Input,Invalid input format with mixed delimiters/newlines is not allowed
-12,"Combination of valid numbers, delimiters, and newlines returns sum","""//;
+11,"Combination of valid numbers, delimiters, and newlines returns sum","""//;
 1;2
 3""",6,"Handles a combination of valid numbers, delimiters, and newlines"
-13,Delimiters of any length are supported,"""//***
+12,Delimiters of any length are supported,"""//***
 12***34***56""",102,Supports custom delimiters of any length and returns sum
