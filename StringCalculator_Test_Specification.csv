@@ -1,8 +1,0 @@
-Test Case ID,Test Description,Input,Expected Output,Expected Behavior
-TC01,Return 0 for an empty string input.,"""""",0,The method returns 0 when no numbers are provided.
-TC02,Return 0 for a single zero as input.,"""0""",0,The method returns 0 when the input is '0'.
-TC03,Return sum for two comma-separated numbers.,"""1,2""",3,The method sums two numbers and returns the result (1 + 2 = 3).
-TC04,Throw exception for negative numbers in input.,"""-1,2""",Throws runtime_error,The method throws an exception for any negative number.
-TC05,Return sum for numbers with a newline delimiter.,"""1\n2,3""",6,The method correctly parses and sums numbers delimited by newlines or commas.
-TC06,Ignore numbers greater than 1000 in the input.,"""1,1001""",1,The method ignores numbers greater than 1000 when calculating the sum.
-TC07,Support custom delimiters for adding numbers.,"""//;\n1;2""",3,"The method correctly parses and sums numbers using custom delimiters defined by the user (e.g., ';')."
